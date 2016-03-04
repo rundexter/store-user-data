@@ -2,25 +2,21 @@
  * Metadata describing the module operation
  */
 {
-    //Required. Inputs the module expects.
     "inputs": [
-        //e.g.
-        /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "key",
+            "title":"Key"
+        },
+        {
+            "id": "value",
+            "title": "Value"
         }
-        */
     ],
-    //Required. Outputs the module emits.
     "outputs": [
-      //e.g.
-      /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "success",
+            "title":"Success"
         }
-      */
     ],
-    "title": "Store user data" /* Required.A display name for the module */
+    "title": "Store user data"
 }
