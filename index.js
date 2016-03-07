@@ -1,4 +1,5 @@
 var _ = require( 'lodash' );
+var q = require( 'q' );
 
 module.exports = {
     /**
@@ -11,9 +12,17 @@ module.exports = {
         var keys = step.input( 'key' ).toArray();
         var vals = step.input( 'value' ).toArray();
 
-        _.zipWith( keys, vals, function( k, v ) { return { key: k, value: v } } ).forEach( function( item ) {
-            this.storage.setUser( item.key, item.value );
-        }.bind( this ) );
-        this.complete( { success: true } );
+        var self = this;
+
+        var writes = [ ];
+        _.zipWith( keys, vals, function( k, v ) { return { key: k, val: v } } )
+            .forEach( function( item ) {
+                writes.push( self.storage.setUser( item.key, item.val ) )
+            } );
+
+        q.all( writes )
+            .then( function( ) { return this.complete() } )
+            .fail( function( err ) { return this.fail( err )  } );
+
     }
 };

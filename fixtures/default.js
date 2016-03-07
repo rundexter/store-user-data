@@ -72,8 +72,8 @@ module.exports = _.merge({
              * You should update this section with some test input for testing your module
              */
             input: {
-               'key': 'foo',
-               'value': 42
+               'key': [ 'foo', 'bar', 'baz' ],
+               'value': [42, 43, 44 ]
             }
         }
     }
