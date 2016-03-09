@@ -21,8 +21,8 @@ module.exports = {
             } );
 
         q.all( writes )
-            .then( function( ) { return this.complete() } )
-            .fail( function( err ) { return this.fail( err )  } );
+            .then( function( ) { return self.complete() } )
+            .fail( function( err ) { return self.fail( err )  } );
 
     }
 };
